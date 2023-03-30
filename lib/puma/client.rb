@@ -557,7 +557,7 @@ module Puma
     end
 
     def calculate_nice(env)
-      return 0 if env["QUERY_STRING"] == "nice"
+      return 0 if env["QUERY_STRING"] =~ /nice/
       return 20
     end
   end

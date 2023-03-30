@@ -122,7 +122,7 @@ module Puma
             end
 
             if continue
-              todo.sort! { |a,b| a.env.nice <=> a.env.nice }
+              todo.sort! { |a,b| a.env['puma.nice'] <=> a.env['puma.nice'] }
               work = todo.shift
             end
             #work = todo.shift if continue
