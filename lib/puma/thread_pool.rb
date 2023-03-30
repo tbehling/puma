@@ -121,7 +121,11 @@ module Puma
               @waiting -= 1
             end
 
-            work = todo.shift if continue
+            if continue
+              todo.sort! { |a,b| a.env.nice <=> a.env.nice }
+              work = todo.shift
+            end
+            #work = todo.shift if continue
           end
 
           break unless continue

@@ -552,6 +552,13 @@ module Puma
       end
       @requests_served += 1
       @ready = true
+
+      @env['puma.nice'] = calculate_nice(env)
+    end
+
+    def calculate_nice(env)
+      return 0 if env["QUERY_STRING"] == "nice"
+      return 20
     end
   end
 end
